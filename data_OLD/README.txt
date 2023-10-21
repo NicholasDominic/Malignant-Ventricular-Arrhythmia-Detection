@@ -1,1 +1,0 @@
-This folder contains all data used in the previous research: N. Surantha, O. K. Utomo, E. M. Lionel, I. D. Gozali and S. M. Isa, "Intelligent Sleep Monitoring System Based on Microservices and Event-Driven Architecture," in IEEE Access, vol. 10, pp. 42069-42080, 2022, doi: 10.1109/ACCESS.2022.3167637.
