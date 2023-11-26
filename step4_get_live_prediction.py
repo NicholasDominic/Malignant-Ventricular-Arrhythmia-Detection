@@ -86,7 +86,7 @@ def start_prediction(model, samples : list, *args, **kwargs) -> list:
 
     # save results (to ../completion/ folder)
     for f, p, s in zip(FINAL_RESULT, prediction, samples):
-        desc = "malignant_ventricular_ectopy" if p == 0 else "Normal Sinus Rhythm"
+        desc = "malignant_ventricular_ectopy" if p == 0 else "normal_sinus_rhythm"
         f.update({
             "prediction_label" : int(p),
             "prediction_desc" : desc,
