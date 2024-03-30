@@ -11,6 +11,7 @@
 # ==================================================================
 
 import pickle, os, json, shutil, hrvanalysis as hrva
+from scipy.stats import entropy
 from argparse import ArgumentParser
 from pandas import read_csv as rcsv
 from numpy import array
@@ -51,7 +52,9 @@ def extract_ftr(nn_interval : list, *args, **kwargs) -> dict:
 
     # Non-linear Domain
     ftr_entropy = hrva.get_sampen(nn_interval) # sample entropy
-    FEATURES.update({"entropy" : ftr_entropy["sampen"]})
+    # entropy_val = ftr_entropy["sampen"]
+    entropy_val = entropy(nn_interval) # to avoid entropy value becomes INF
+    FEATURES.update({"entropy" : entropy_val})
 
     ftr_poincare = hrva.get_poincare_plot_features(nn_interval)
     FEATURES.update(ftr_poincare)
@@ -81,6 +84,7 @@ def start_prediction(model, samples : list, *args, **kwargs) -> list:
         PREDICTION_FTRS.append(input_features)
 
     # model prediction
+    # print(PREDICTION_FTRS)
     input_scaled = scaler.fit_transform(array(PREDICTION_FTRS))
     prediction = model.predict(input_scaled).tolist()
 
